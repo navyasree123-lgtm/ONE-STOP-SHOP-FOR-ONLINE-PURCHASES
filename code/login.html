@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShopEZ | Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            width: 400px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card login-card shadow p-4">
+    <h3 class="text-center mb-3">ShopEZ Login</h3>
+
+    <input type="text" id="loginUsername" class="form-control mb-3" placeholder="Username">
+    <input type="password" id="loginPassword" class="form-control mb-3" placeholder="Password">
+
+    <button class="btn btn-dark w-100 mb-2" onclick="login()">Login</button>
+
+    <p class="text-center mt-2">
+        New User?
+        <a href="register.html">Register here</a>
+    </p>
+</div>
+
+<script>
+function login() {
+    const username = document.getElementById("loginUsername").value;
+    const password = document.getElementById("loginPassword").value;
+
+    const savedUsername = localStorage.getItem("shopezUsername");
+    const savedPassword = localStorage.getItem("shopezPassword");
+
+    if(username === savedUsername && password === savedPassword) {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("activeUser", username);
+        window.location.href = "index.html";
+    } else {
+        alert("Invalid username or password!");
+    }
+}
+</script>
+
+</body>
+</html>
